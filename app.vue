@@ -23,7 +23,7 @@ useSeoMeta({
 	ogTitle: 'Nii Obodai',
 	description: `%s - Marketing Consultant`,
 	ogDescription: '%s - Marketing Consultant',
-	ogImage: 'https://kwasidarko.vercel.app/_vercel/image?url=%2Fartworks%2Fhere+and+now%2F4.jpeg&w=1536&q=100',
+	ogImage: 'https://res.cloudinary.com/dyr6sb7gn/image/upload/v1736003562/niiaryeh_q4xeqm.jpg',
 	ogImageAlt: 'Nii Obodai',
 	ogUrl: 'https://www.theniiobodai.com/',
 	twitterTitle: 'Nii Obodai',
