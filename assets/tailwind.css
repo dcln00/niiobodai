@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+::selection {
+	background-color: black;
+	color: white;
+}
+
+body {
+	overflow-x: hidden;
+	font-family: "Jost", serif;
+}
+
+@layer base {
+	h1 {
+		/* font-family: "Inter", serif; */
+	}
+}
+
+@layer components {
+	.form-input {
+		@apply w-full p-3 pb-5 text-white bg-transparent border-b placeholder:text-zinc-500 focus:outline-none;
+	}
+}
