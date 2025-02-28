@@ -20,10 +20,7 @@ export default defineNuxtConfig({
 		},
 		preload: true,
 	},
-	runtimeConfig: {
-		appBaseUrl: process.env.NUXT_APP_BASE_URL,
-	},
 	nitro: {
-		preset: 'github_pages',
+		preset: 'vercel',
 	},
 })
