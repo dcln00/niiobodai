@@ -13,6 +13,18 @@ const nav = [
 		name: 'Photography',
 	},
 	{
+		href: '/#',
+		name: 'Campaigns',
+	},
+	{
+		href: '/blog',
+		name: 'Blog',
+	},
+	{
+		href: '/#',
+		name: 'Events',
+	},
+	{
 		href: '/contact',
 		name: 'Contact',
 	}

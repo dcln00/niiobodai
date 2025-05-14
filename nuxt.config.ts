@@ -7,7 +7,8 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'nuxt-svgo',
 		'@vueuse/nuxt',
-		'@vueuse/motion/nuxt'
+		'@vueuse/motion/nuxt',
+		'@nuxt/content'
 	],
 	tailwindcss: {
 		viewer: false,

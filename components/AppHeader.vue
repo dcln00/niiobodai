@@ -2,6 +2,33 @@
 const { x, y } = useWindowScroll()
 
 const isNotScrolled = computed(() => y.value < 200)
+
+const nav = [
+	{
+		href: '/',
+		name: 'Home',
+	},
+	{
+		href: '/photography',
+		name: 'Photography',
+	},
+	{
+		href: '/campaigns',
+		name: 'Campaigns',
+	},
+	{
+		href: '/blog',
+		name: 'Blog',
+	},
+	{
+		href: '/events',
+		name: 'Events',
+	},
+	{
+		href: '/contact',
+		name: 'Contact',
+	}
+]
 </script>
 
 <template lang="pug">
@@ -11,9 +38,7 @@ header(:class="['fixed w-full z-10 top-0 duration-300', {'py-8': isNotScrolled},
 			h1(class="text-2xl text-white tracking-tight font-light cursor-pointer") Nii Obodai
 		nav(class="ms-auto hidden lg:block")
 			ul(class="flex space-x-4 *:cursor-pointer hover:*:text-brand-accent hover:*:duration-300")
-				li #[NuxtLink(to="/") Home]
-				li #[NuxtLink(to="#") Photography]
-				li #[NuxtLink(to="/contact") Contact]
+				li(v-for="(item, idx) in nav" :key="idx") #[NuxtLink(:to="item.href" activeClass='active-link') {{ item.name }}]
 		.socials(class="space-x-6 ms-12 hidden lg:flex")
 			NuxtLink(to="http://www.linkedin.com/in/terrick-nii-obodai-torgbor/" target="_blank")
 				svgo-linkedin(class="text-white hover:text-brand-accent")
@@ -24,6 +49,10 @@ header(:class="['fixed w-full z-10 top-0 duration-300', {'py-8': isNotScrolled},
 </template>
 
 <style scoped>
+.active-link {
+	color: #9cc741;
+}
+
 nav li {
 	position: relative;
 	transition: 0.3s;
