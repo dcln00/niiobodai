@@ -1,9 +1,9 @@
 ---
-title: 'How Global Health Policy and Management Shapes Post-COVID Branding'
-description: 'How Global Health Policy and Management Shapes Post-COVID Branding'
-image: '/blog/global-health.jpg'
+title: How Global Health Policy and Management Shapes Post-COVID Branding
+description: How Global Health Policy and Management Shapes Post-COVID Branding
+date: 2025-05-15T01:28:00
+image: /blog/global-health.jpg
 ---
-
 In 2020, the world stopped. Borders closed. Health systems cracked. Brands, those contemporary symbols of identity, aspiration, and belonging, encountered an existential challenge. COVID-19 was not merely a public health crisis but a brand crisis. The pandemic exposed the vulnerability of global supply chains, the insufficiency of crisis communication, and the ethical shortcomings in numerous corporate social responsibility (CSR) initiatives. As someone with a background in marketing and branding, this rupture is profound. Instead of returning to my usual routine, I decided to change course and enroll in the Master of Science in Global Health Policy and Management at Brandeis University's Heller School.
 
 It is an unlikely turn from campaigns to care systems, from brand equity to health equity. But the connection is deeper than surface logic might suggest. If branding is about trust, then COVID-19 reminded us that epidemiological preparedness shapes public trust as much as a clever slogan. In that sense, marketing and global health are not separate worlds; they are two languages converging in an age of global interdependence.
