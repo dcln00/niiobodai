@@ -10,7 +10,7 @@ useHead({
 	title: () => `${formatSlug.value} - Nii Obodai`,
 })
 
-const { data: post } = useAsyncData(`${route.params.slug}`, () => {
+const { data: post } = await useAsyncData(`${route.params.slug}`, () => {
   return queryCollection('blog').path(`/blog/${route.params.slug}`).first()
 })
 </script>
@@ -19,7 +19,7 @@ const { data: post } = useAsyncData(`${route.params.slug}`, () => {
 section#hero(class="pt-40 pb-24 bg-brand-black")
 	.container
 		div(class="text-center space-y-16")
-			h1(class="text-2xl lg:text-3xl text-white tracking-tight font-light") {{ post.title}}
+			h1(class="text-2xl lg:text-3xl text-white tracking-tight font-light") debugging {{ post.title}}
 			.photo(class="w-full lg:h-96 pointer-events-none")
 				NuxtImg(:src="post.image" alt="featured image" class="w-full h-full object-cover object-center")
 section#post(class="py-20 bg-brand-dark")
