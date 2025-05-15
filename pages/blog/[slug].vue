@@ -10,7 +10,7 @@ useHead({
 	title: () => `${formatSlug.value} - Nii Obodai`,
 })
 
-const { data: post } = await useAsyncData(`${route.params.slug}`, () => {
+const { data: post } = useAsyncData(`${route.params.slug}`, () => {
   return queryCollection('blog').path(`/blog/${route.params.slug}`).first()
 })
 </script>

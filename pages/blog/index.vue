@@ -3,7 +3,7 @@ useHead({
 	title: 'Nii Obodai - Blog',
 })
 
-const { data:posts } = await useAsyncData('posts', () => {
+const { data:posts } = useAsyncData('posts', () => {
   return queryCollection('blog')
 	.select('title', 'path', 'image', 'date')
 	.order('date', 'DESC')
