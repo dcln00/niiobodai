@@ -1,6 +1,6 @@
 ---
-title: Lorem ipsum dolor sit amet.
-description: Lorem ipsum dolor sit amet.
+title: Lorem ipsum dolor sit amet
+description: Lorem ipsum dolor sit amet
 date: 2025-05-15T01:28:00
 image: /blog/happy-cheerful-african-american-farm-worker-holding-crate-full-local-eco-friendly-ripe-leafy-greens-from-sustainable-crop-harvest-entrepreneurial-bio-permaculture-greenhouse-farm.jpg
 ---
