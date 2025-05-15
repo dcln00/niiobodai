@@ -6,6 +6,7 @@ useHead({
 const { data:posts } = await useAsyncData('posts', () => {
   return queryCollection('blog')
 	.select('title', 'path', 'image')
+	.order('date', 'DESC')
 	.all()
 })
 </script>

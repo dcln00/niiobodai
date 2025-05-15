@@ -7,6 +7,7 @@ export default defineContentConfig({
 			type: 'page',
 			schema: z.object({
 				image: z.string(),
+				date: z.date()
 			})
 		}),
 	},
