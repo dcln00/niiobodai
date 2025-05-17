@@ -3,11 +3,27 @@ useHead({
 	title: 'Nii Obodai - Blog',
 })
 
-const { data: posts, status, error } = await useLazyAsyncData('posts', () => {
+// Define BlogCollectionItem type if not imported from elsewhere
+type BlogCollectionItem = {
+  title: string
+  path: string
+  image: string
+  date: string | Date
+}
+type BlogPost = Pick<BlogCollectionItem, 'title' | 'path' | 'image' | 'date'>
+const posts = ref<BlogPost[]>([])
+
+const { data, status, error } = await useLazyAsyncData('posts', () => {
   return queryCollection('blog')
 	.select('title', 'path', 'image', 'date')
 	.order('date', 'DESC')
 	.all()
+})
+
+onNuxtReady(() => {
+  if (data.value) {
+	posts.value = data.value
+  }
 })
 </script>
 
