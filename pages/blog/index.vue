@@ -3,17 +3,12 @@ useHead({
 	title: 'Nii Obodai - Blog',
 })
 
-// const { data: posts, status, error } = await useLazyAsyncData('posts', () => {
-//   return queryCollection('blog')
-// 	.select('title', 'path', 'image', 'date')
-// 	.order('date', 'DESC')
-// 	.all()
-// })
-
-const posts = await queryCollection('blog')
+const { data: posts, status, error } = await useLazyAsyncData('posts', () => {
+  return queryCollection('blog')
 	.select('title', 'path', 'image', 'date')
 	.order('date', 'DESC')
 	.all()
+})
 </script>
 
 <template lang="pug">
