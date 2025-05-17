@@ -3,27 +3,11 @@ useHead({
 	title: 'Nii Obodai - Blog',
 })
 
-// Define BlogCollectionItem type if not imported from elsewhere
-type BlogCollectionItem = {
-  title: string
-  path: string
-  image: string
-  date: string | Date
-}
-type BlogPost = Pick<BlogCollectionItem, 'title' | 'path' | 'image' | 'date'>
-const posts = ref<BlogPost[]>([])
-
-const { data, status, error } = await useLazyAsyncData('posts', () => {
+const { data: posts, status, error } = await useLazyAsyncData('posts', () => {
   return queryCollection('blog')
 	.select('title', 'path', 'image', 'date')
 	.order('date', 'DESC')
 	.all()
-})
-
-onNuxtReady(() => {
-  if (data.value) {
-	posts.value = data.value
-  }
 })
 </script>
 
@@ -44,10 +28,11 @@ section#posts(class="py-20 bg-brand-dark")
 			div(class="h-7 bg-neutral-700")
 			div(class="h-7 w-1/2 bg-neutral-700")
 		div(v-else)
-			div(v-for="(post, idx) in posts" :key="idx" class="lg:w-1/2 mx-auto mb-16 last:mb-0")
-					NuxtLink(:to="post.path")
-						div(class="space-y-4")
-							.featured-image(class="lg:h-96 overflow-hidden")
-								NuxtImg(:src="post.image" alt="featured image" class="w-full h-full object-cover object-center hover:scale-105 duration-300")
-							h1(class="text-2xl text-white tracking-tight font-light") {{ post.title }}
+			ClientOnly
+				div(v-for="(post, idx) in posts" :key="idx" class="lg:w-1/2 mx-auto mb-16 last:mb-0")
+						NuxtLink(:to="post.path")
+							div(class="space-y-4")
+								.featured-image(class="lg:h-96 overflow-hidden")
+									NuxtImg(:src="post.image" alt="featured image" class="w-full h-full object-cover object-center hover:scale-105 duration-300")
+								h1(class="text-2xl text-white tracking-tight font-light") {{ post.title }}
 </template>

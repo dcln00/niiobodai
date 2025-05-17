@@ -25,5 +25,6 @@ section#hero(class="pt-40 pb-24 bg-brand-black")
 section#post(class="py-20 bg-brand-dark")
 	div(class="max-lg:container")
 		div(class="lg:w-1/2 mx-auto")
-			ContentRenderer(v-if="post" :value="post" class="prose max-w-none prose-a:no-underline prose-a:text-white prose-h2:pb-4 prose-h1:font-normal prose-h1:text-xl prose-p:text-zinc-300 prose-strong:text-white prose-headings:text-white")
+			ClientOnly
+				ContentRenderer(v-if="post" :value="post" class="prose max-w-none prose-a:no-underline prose-a:text-white prose-h2:pb-4 prose-h1:font-normal prose-h1:text-xl prose-p:text-zinc-300 prose-strong:text-white prose-headings:text-white")
 </template>
