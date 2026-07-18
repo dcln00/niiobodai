@@ -1,0 +1,42 @@
+<script setup lang="ts">
+useHead({
+	title: 'Nii Obodai - Contact',
+})
+
+const input = reactive({
+	name: '',
+	email: '',
+	phone: '',
+	subject: '',
+	message: '',
+})
+</script>
+
+<template lang="pug">
+section#contact-form(class="pt-40 pb-20 lg:py-60 bg-brand-black")
+	.container(class="flex flex-wrap")
+		div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-8")
+			h2(class="text-2xl lg:text-5xl text-white tracking-tighter") Let's Connect
+			p(class="text-2xl text-white tracking-tighter") Have a project or question? Send me a message. I will reply within 48 hours.
+			form(novalidate)
+				div(class="flex flex-wrap -m-2")
+					div(class="w-full lg:w-1/2 p-2 pb-4 max-lg:px-0")
+						input.form-input(required id="name" type="text" v-model="input.name" placeholder="Your Name")
+					div(class="w-full lg:w-1/2 p-2 pb-4 max-lg:px-0")
+						input.form-input(required id="email" type="email" v-model.trim="input.email" placeholder="Email Address")
+					div(class="w-full p-2 pb-4 max-lg:px-0")
+						input.form-input(required id="phone" type="text" v-model="input.phone" placeholder="Phone Number")
+					div(class="w-full p-2 pb-4 max-lg:px-0")
+						input.form-input(required id="subject" type="text" v-model="input.subject" placeholder="Subject")
+					div(class="w-full p-2 pb-4 max-lg:px-0")
+						textarea.form-input(id="message" rows="3" v-model="input.message" placeholder="Your Message" class="resize-none")
+				button(type="submit" class="mt-8 p-3 px-6 text-sm uppercase bg-white hover:bg-neutral-300 text-black") SUBMIT
+		div(class="w-full lg:w-1/2 p-4 max-lg:px-0 hidden lg:flex items-center")
+			div(class="space-y-8 bg-brand-dark w-full lg:w-2/3 p-8 rounded-lg mx-auto")
+				div
+					p(class="text-2xl text-white tracking-tighter pb-2") Email Me At
+					NuxtLink(to="mailto:info@theniiobodai.com" class="text-lg text-zinc-400") info@theniiobodai.com
+				div
+					p(class="text-2xl text-white tracking-tighter pb-2") Telephone
+					NuxtLink(to="tel:+1(617)959-0984" class="text-lg text-zinc-400") +1 (617) 959-0984
+</template>
