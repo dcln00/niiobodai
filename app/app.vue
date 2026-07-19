@@ -2,6 +2,12 @@
 const meta = useMeta()
 const route = useRoute()
 
+const show = ref(false)
+
+const toggleShow = (): void => {
+	show.value = !show.value
+}
+
 const pageTitle = computed(() => `${meta.value.siteName} | ${meta.value.tagline}`)
 const canonicalUrl = computed(
 	() => new URL(route.path, meta.value.siteUrl).href,
@@ -92,7 +98,8 @@ useSeoMeta({
 
 <template lang="pug">
 .body-outlet(class="flex flex-col min-h-screen")
-	app-header
+	app-header(@toggle-show="toggleShow")
+	mobile-nav(:show="show" @close="show = false")
 	NuxtRouteAnnouncer
 	main(class="grow relative overflow-hidden")
 		NuxtPage
