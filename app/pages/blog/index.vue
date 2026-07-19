@@ -1,7 +1,8 @@
 <script setup lang="ts">
-useHead({
-	title: 'Nii Obodai - Blog',
-})
+usePageSeo(
+	'Blog - Nii Obodai',
+	'Practical insights on studying abroad, business, branding, leadership, and personal growth from Terrick Nii Obodai Torgbor.',
+)
 
 const { data: blog, status, error } = await useAsyncData('all-blog', () =>
 	queryCollection('blog').all()
@@ -29,6 +30,6 @@ section#posts(class="py-20 bg-brand-dark")
 					NuxtLink(:to="post.path")
 						div(class="space-y-4")
 							.featured-image(class="lg:h-96 overflow-hidden")
-								NuxtImg(:src="post.image" alt="featured image" class="w-full h-full object-cover object-center hover:scale-105 duration-300")
-							h1(class="text-2xl text-white tracking-tight font-light") {{ post.title }}
+								NuxtImg(:src="post.image" :alt="post.title" class="w-full h-full object-cover object-center hover:scale-105 duration-300")
+							h2(class="text-2xl text-white tracking-tight font-light") {{ post.title }}
 </template>

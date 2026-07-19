@@ -1,7 +1,8 @@
 <script setup lang="ts">
-useHead({
-	title: 'Nii Obodai - Study Abroad',
-})
+usePageSeo(
+	'Study Abroad - Nii Obodai',
+	'Prepare for life in America before you arrive. Coaching and resources for international students on finances, housing, healthcare, credit, jobs, and careers.',
+)
 
 const ways = [
 	'Pre-departure coaching',

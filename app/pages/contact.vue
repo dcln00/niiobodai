@@ -1,7 +1,8 @@
 <script setup lang="ts">
-useHead({
-	title: 'Nii Obodai - Contact',
-})
+usePageSeo(
+	'Contact - Nii Obodai',
+	'Get in touch about study abroad coaching, business and brand strategy, speaking engagements, or ways we can work together.',
+)
 
 const input = reactive({
 	name: '',
@@ -18,7 +19,7 @@ const newsletterEmail = ref('')
 section#contact-form(class="pt-40 pb-20 lg:py-60 bg-brand-black")
 	.container(class="flex flex-wrap")
 		div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-8")
-			h2(class="text-2xl lg:text-5xl text-white tracking-tighter") Let's Start the Conversation
+			h1(class="text-2xl lg:text-5xl text-white tracking-tighter") Let's Start the Conversation
 			p(class="text-lg text-zinc-400 tracking-tight") Whether you're planning to study abroad, growing a business, looking for a speaker, or exploring ways we can work together, I'd love to hear from you. Tell me a little about what you're working on, and let's explore how I can help.
 			form(novalidate)
 				div(class="flex flex-wrap -m-2")

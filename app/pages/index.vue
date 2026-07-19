@@ -1,7 +1,8 @@
 <script setup lang="ts">
-useHead({
-	title: 'Nii Obodai - Helping People Prepare for Opportunities',
-})
+usePageSeo(
+	'Nii Obodai - Helping People Prepare for Opportunities',
+	'Terrick Nii Obodai Torgbor helps you prepare for opportunities that change your life — study abroad, business and brand strategy, speaking, and resources.',
+)
 
 const heroButtons = [
 	{ name: 'Explore My Work', path: '/services' },

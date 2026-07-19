@@ -1,7 +1,8 @@
 <script setup lang="ts">
-useHead({
-	title: 'Nii Obodai - Services',
-})
+usePageSeo(
+	'Services - Nii Obodai',
+	"Study abroad coaching, marketing strategy, business consulting, and speaking engagements to help you build what's next.",
+)
 
 const services = [
 	{

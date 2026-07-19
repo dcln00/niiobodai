@@ -4,7 +4,13 @@ const route = useRoute()
 const pageTitle = computed(() => titleCase(route.params.slug as string))
 
 useHead({
-	title: () => `Nii Obodai - ${pageTitle.value}`,
+	title: () => `${pageTitle.value} - Nii Obodai`,
+})
+
+// Catch-all renders arbitrary slugs with no real content; keep these
+// thin/soft-404 pages out of the index.
+useSeoMeta({
+	robots: 'noindex, follow',
 })
 </script>
 

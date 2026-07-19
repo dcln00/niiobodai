@@ -1,7 +1,8 @@
 <script setup lang="ts">
-useHead({
-	title: 'Nii Obodai - About',
-})
+usePageSeo(
+	'About - Nii Obodai',
+	'Meet Terrick Nii Obodai Torgbor — marketing strategist, educator, and speaker helping people prepare for the opportunities that define their future.',
+)
 </script>
 
 <template lang="pug">

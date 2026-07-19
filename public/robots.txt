@@ -1,2 +1,4 @@
 User-Agent: *
 Disallow:
+
+Sitemap: https://theniiobodai.com/sitemap.xml

@@ -18,7 +18,7 @@ export default function () {
 		siteDescription: "Terrick Nii Obodai Torgbor helps people prepare for opportunities that change their lives — from studying abroad and building businesses to strengthening brands and advancing careers with clarity, confidence, and practical strategy.",
 		ogSiteName: "Nii Obodai",
 		siteUrl: "https://theniiobodai.com",
-		ogImage: "",
+		ogImage: "https://res.cloudinary.com/dyr6sb7gn/image/upload/v1736003562/niiaryeh_q4xeqm.jpg",
 		locale: "en_US",
 		socials,
 		business: {

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-useHead({
-	title: 'Nii Obodai - Store',
-})
+usePageSeo(
+	'Store - Nii Obodai',
+	'Practical digital resources — guides, planners, and toolkits to help you study abroad, grow a business, and strengthen your brand with confidence.',
+)
 </script>
 
 <template lang="pug">
