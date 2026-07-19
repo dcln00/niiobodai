@@ -1,8 +1,16 @@
 <script setup lang="ts">
-usePageSeo(
-	'Study Abroad - Nii Obodai',
-	'Prepare for life in America before you arrive. Coaching and resources for international students on finances, housing, healthcare, credit, jobs, and careers.',
-)
+const title = 'Study Abroad - Nii Obodai'
+const description =
+	'Prepare for life in America before you arrive. Coaching and resources for international students on finances, housing, healthcare, credit, jobs, and careers.'
+
+useSeoMeta({
+	title,
+	description,
+	ogTitle: title,
+	ogDescription: description,
+	twitterTitle: title,
+	twitterDescription: description,
+})
 
 const ways = [
 	'Pre-departure coaching',

@@ -1,8 +1,16 @@
 <script setup lang="ts">
-usePageSeo(
-	'Services - Nii Obodai',
-	"Study abroad coaching, marketing strategy, business consulting, and speaking engagements to help you build what's next.",
-)
+const title = 'Services - Nii Obodai'
+const description =
+	"Study abroad coaching, marketing strategy, business consulting, and speaking engagements to help you build what's next."
+
+useSeoMeta({
+	title,
+	description,
+	ogTitle: title,
+	ogDescription: description,
+	twitterTitle: title,
+	twitterDescription: description,
+})
 
 const services = [
 	{

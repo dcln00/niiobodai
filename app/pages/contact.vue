@@ -1,8 +1,16 @@
 <script setup lang="ts">
-usePageSeo(
-	'Contact - Nii Obodai',
-	'Get in touch about study abroad coaching, business and brand strategy, speaking engagements, or ways we can work together.',
-)
+const title = 'Contact - Nii Obodai'
+const description =
+	'Get in touch about study abroad coaching, business and brand strategy, speaking engagements, or ways we can work together.'
+
+useSeoMeta({
+	title,
+	description,
+	ogTitle: title,
+	ogDescription: description,
+	twitterTitle: title,
+	twitterDescription: description,
+})
 
 const input = reactive({
 	name: '',

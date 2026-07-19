@@ -1,8 +1,16 @@
 <script setup lang="ts">
-usePageSeo(
-	'About - Nii Obodai',
-	'Meet Terrick Nii Obodai Torgbor — marketing strategist, educator, and speaker helping people prepare for the opportunities that define their future.',
-)
+const title = 'About - Nii Obodai'
+const description =
+	'Meet Terrick Nii Obodai Torgbor — marketing strategist, educator, and speaker helping people prepare for the opportunities that define their future.'
+
+useSeoMeta({
+	title,
+	description,
+	ogTitle: title,
+	ogDescription: description,
+	twitterTitle: title,
+	twitterDescription: description,
+})
 </script>
 
 <template lang="pug">

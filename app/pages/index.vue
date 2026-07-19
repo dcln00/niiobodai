@@ -1,8 +1,16 @@
 <script setup lang="ts">
-usePageSeo(
-	'Nii Obodai - Helping People Prepare for Opportunities',
-	'Terrick Nii Obodai Torgbor helps you prepare for opportunities that change your life — study abroad, business and brand strategy, speaking, and resources.',
-)
+const title = 'Nii Obodai - Helping People Prepare for Opportunities'
+const description =
+	'Terrick Nii Obodai Torgbor helps you prepare for opportunities that change your life — study abroad, business and brand strategy, speaking, and resources.'
+
+useSeoMeta({
+	title,
+	description,
+	ogTitle: title,
+	ogDescription: description,
+	twitterTitle: title,
+	twitterDescription: description,
+})
 
 const heroButtons = [
 	{ name: 'Explore My Work', path: '/services' },

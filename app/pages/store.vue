@@ -1,8 +1,16 @@
 <script setup lang="ts">
-usePageSeo(
-	'Store - Nii Obodai',
-	'Practical digital resources — guides, planners, and toolkits to help you study abroad, grow a business, and strengthen your brand with confidence.',
-)
+const title = 'Store - Nii Obodai'
+const description =
+	'Practical digital resources — guides, planners, and toolkits to help you study abroad, grow a business, and strengthen your brand with confidence.'
+
+useSeoMeta({
+	title,
+	description,
+	ogTitle: title,
+	ogDescription: description,
+	twitterTitle: title,
+	twitterDescription: description,
+})
 </script>
 
 <template lang="pug">

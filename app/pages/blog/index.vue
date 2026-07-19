@@ -1,8 +1,16 @@
 <script setup lang="ts">
-usePageSeo(
-	'Blog - Nii Obodai',
-	'Practical insights on studying abroad, business, branding, leadership, and personal growth from Terrick Nii Obodai Torgbor.',
-)
+const title = 'Blog - Nii Obodai'
+const description =
+	'Practical insights on studying abroad, business, branding, leadership, and personal growth from Terrick Nii Obodai Torgbor.'
+
+useSeoMeta({
+	title,
+	description,
+	ogTitle: title,
+	ogDescription: description,
+	twitterTitle: title,
+	twitterDescription: description,
+})
 
 const { data: blog, status, error } = await useAsyncData('all-blog', () =>
 	queryCollection('blog').all()
