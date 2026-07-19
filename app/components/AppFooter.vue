@@ -20,6 +20,6 @@ footer(class="pt-20 pb-32 bg-brand-dark")
 		div(class="w-full space-y-8")
 			.socials(class="flex justify-center space-x-4 *:text-white *:text-xl")
 				NuxtLink(v-for="social in meta.socials" :key="social.name" :to="social.href" target="_blank")
-					component(:is="socialIcons[social.icon]" class="hover:text-brand-accent")
+					component(:is="socialIcons[social.icon]" class="hover:text-brand-accent size-4")
 			.copyright(class="text-white text-center capitalize text-sm tracking-tight") © {{ currentYear }} All rights reserved
 </template>

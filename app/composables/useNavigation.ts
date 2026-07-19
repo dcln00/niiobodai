@@ -5,20 +5,24 @@ export default function () {
 			path: "/",
 		},
 		{
-			name: "Photography",
-			path: "/photography",
+			name: "About",
+			path: "/about",
 		},
 		{
-			name: "Campaigns",
-			path: "/campaigns",
+			name: "Study Abroad",
+			path: "/study-abroad",
+		},
+		{
+			name: "Store",
+			path: "/store",
 		},
 		{
 			name: "Blog",
 			path: "/blog",
 		},
 		{
-			name: "Events",
-			path: "/events",
+			name: "Services",
+			path: "/services",
 		},
 		{
 			name: "Contact",

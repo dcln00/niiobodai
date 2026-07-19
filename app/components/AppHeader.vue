@@ -26,7 +26,7 @@ header(class="fixed w-full z-10 top-0 duration-300 py-4 bg-brand-black")
 					NuxtLink(:to="item.path" activeClass="text-brand-accent") {{ item.name }}
 		.socials(class="ms-12 space-x-6 hidden lg:flex")
 			NuxtLink(v-for="social in meta.socials" :key="social.name" :to="social.href" target="_blank")
-				component(:is="socialIcons[social.icon]" class="text-white hover:text-brand-accent")
+				component(:is="socialIcons[social.icon]" class="text-white hover:text-brand-accent size-4")
 		.hamburger(class="ms-auto cursor-pointer block lg:hidden" @click="$emit('toggleShow')")
 			svg-hamburger(class="text-white")
 </template>
