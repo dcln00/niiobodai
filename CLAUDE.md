@@ -29,7 +29,7 @@ Nuxt 4 (Vue 3, `srcDir` defaults to `app/`), `@nuxt/content` v3, `@nuxt/image`, 
 
 **`app/app.vue` is the shell** (no `layouts/`). It composes `AppHeader` + `NuxtPage` + `AppFooter`, owns the mobile-nav open state, and sets all global SEO. `AppHeader` emits `toggle-show` → `app.vue` toggles `showMobileNav` → passed to `MobileNav` (a full-screen `lg:hidden` overlay that emits `close`).
 
-**`useMeta()` is the single source of truth for site identity.** It returns a `useState` object holding `siteName`, `tagline`, `siteDescription`, `ogImage`, `locale`, a `socials` array, and a `business` block. `app.vue` derives `useHead`/`useSeoMeta` and a JSON-LD `ProfessionalService` schema from it; `AppHeader`/`AppFooter` render `meta.socials`. `business.sameAs` is computed from `socials`, so social links have one definition. Change site-wide meta here, not in individual pages.
+**`useMeta()` is the single source of truth for site identity.** It returns a `useState` object holding `siteName`, `tagline`, `siteDescription`, `ogImage`, `locale`, a `socials` array, and a `person` block. `app.vue` derives `useHead`/`useSeoMeta` and a JSON-LD `Person` schema from it; `AppHeader`/`AppFooter` render `meta.socials`. `person.sameAs` is computed from `socials`, so social links have one definition. Empty `person.address` fields are filtered out before rendering, and `address` is omitted entirely when all of them are blank — never emit empty-string properties into the schema. Change site-wide meta here, not in individual pages.
 
 **`useNavigation()` is the single nav menu** (also `useState`), consumed by both `AppHeader` and `MobileNav`. Add/remove nav items here.
 

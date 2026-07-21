@@ -13,41 +13,28 @@ const canonicalUrl = computed(
 	() => new URL(route.path, meta.value.siteUrl).href,
 )
 
-const localBusinessSchema = computed(() => {
-	const b = meta.value.business
+const personSchema = computed(() => {
+	const p = meta.value.person
+	const address = Object.fromEntries(
+		Object.entries(p.address).filter(([, value]) => value),
+	)
+
 	return {
 		'@context': 'https://schema.org',
-		'@type': 'ProfessionalService',
-		'@id': `${meta.value.siteUrl}/#business`,
-		name: meta.value.siteName,
-		legalName: b.legalName,
+		'@type': 'Person',
+		'@id': `${meta.value.siteUrl}/#person`,
+		name: p.legalName,
+		alternateName: meta.value.siteName,
+		jobTitle: meta.value.tagline,
 		description: meta.value.siteDescription,
 		url: meta.value.siteUrl,
 		image: meta.value.ogImage,
-		logo: meta.value.ogImage,
-		email: b.email,
-		telephone: b.telephone,
-		priceRange: b.priceRange,
-		address: {
-			'@type': 'PostalAddress',
-			streetAddress: b.address.streetAddress,
-			addressLocality: b.address.addressLocality,
-			addressRegion: b.address.addressRegion,
-			postalCode: b.address.postalCode,
-			addressCountry: b.address.addressCountry,
-		},
-		...(b.geo.latitude && b.geo.longitude
-			? {
-					geo: {
-						'@type': 'GeoCoordinates',
-						latitude: b.geo.latitude,
-						longitude: b.geo.longitude,
-					},
-				}
+		email: p.email,
+		telephone: p.telephone,
+		...(Object.keys(address).length
+			? { address: { '@type': 'PostalAddress', ...address } }
 			: {}),
-		openingHours: b.openingHours,
-		sameAs: b.sameAs,
-		areaServed: 'Worldwide',
+		sameAs: p.sameAs,
 	}
 })
 
@@ -73,7 +60,7 @@ useHead({
 	script: [
 		{
 			type: 'application/ld+json',
-			innerHTML: () => JSON.stringify(localBusinessSchema.value),
+			innerHTML: () => JSON.stringify(personSchema.value),
 		},
 	],
 })
