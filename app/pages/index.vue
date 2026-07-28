@@ -63,6 +63,30 @@ const beforeYouLand = [
 	'Or why your financial decisions today can affect your future for years.',
 ]
 
+interface CommunityPhoto {
+	src: string
+	alt: string
+	caption: string
+}
+
+const communityPhotos: CommunityPhoto[] = [
+	{
+		src: '/photos/awards-night-team-selfie.jpg',
+		alt: 'A group of students and staff celebrating together, holding glass awards at an evening ceremony',
+		caption: 'Awards night with the team.',
+	},
+	{
+		src: '/photos/study-group-meeting-selfie.jpg',
+		alt: 'Students gathered around a table with laptops during an evening study session',
+		caption: 'Late study sessions on campus.',
+	},
+	{
+		src: '/photos/watch-party-group-photo.jpg',
+		alt: 'A group posing in front of a projector screen during a football watch party',
+		caption: 'Match day, everyone in one room.',
+	},
+]
+
 const resources = [
 	'Before You Land Survival Guide',
 	'International Student Budget Planner',
@@ -80,6 +104,7 @@ const resources = [
 <template lang="pug">
 div
 	section#hero(class="relative pt-40 pb-20 lg:py-52 bg-brand-black overflow-hidden")
+		hero-media(src="/photos/portrait-navy-suit-outdoors.jpg" alt="Terrick Nii Obodai Torgbor standing outdoors in a navy suit" position="object-[50%_15%]" :priority="true")
 		.container(class="relative")
 			.content(class="w-full lg:w-3/4 space-y-6")
 				h1(class="text-3xl lg:text-6xl text-white tracking-tighter font-light leading-tight!") Helping People Prepare for Opportunities That #[span(class="text-brand-accent") Change Their Lives.]
@@ -88,8 +113,9 @@ div
 					NuxtLink(v-for="(button, idx) in heroButtons" :key="button.path" :to="button.path" :class="['p-3 px-6 text-sm uppercase tracking-tight duration-300', idx === 0 ? 'bg-white text-black hover:bg-neutral-300' : 'border border-white/30 text-white hover:border-brand-accent hover:text-brand-accent']") {{ button.name }}
 	section#who-i-am(class="py-20 lg:py-28 bg-brand-dark")
 		.container(class="flex flex-wrap")
-			div(class="w-full lg:w-4/12 p-4 max-lg:px-0")
+			div(class="w-full lg:w-4/12 p-4 max-lg:px-0 space-y-8")
 				h2(class="text-sm uppercase text-brand-accent font-medium tracking-widest") Who I Am
+				photo-figure(src="/photos/international-festival-smock-portrait.jpg" alt="Terrick holding a microphone in a Ghanaian smock, leading a crowd at an international festival" caption="Hosting the campus international festival." ratio="aspect-3/4" sizes="sm:100vw md:100vw lg:100vw xl:33vw 2xl:33vw")
 			div(class="w-full lg:w-8/12 p-4 max-lg:px-0 space-y-6")
 				h3(class="text-2xl lg:text-4xl text-white tracking-tighter font-light") Hi, I'm Terrick Nii Obodai Torgbor.
 				p(class="text-lg text-zinc-400 tracking-tight") I'm a marketing strategist, educator, entrepreneur, and speaker passionate about helping people make better decisions before the moment that matters most.
@@ -108,8 +134,9 @@ div
 					NuxtLink(:to="service.path" class="inline-block text-sm uppercase tracking-tight text-white hover:text-brand-accent duration-300") {{ service.cta }} →
 	section#before-you-land(class="py-20 lg:py-28 bg-brand-dark")
 		.container(class="flex flex-wrap")
-			div(class="w-full lg:w-4/12 p-4 max-lg:px-0")
+			div(class="w-full lg:w-4/12 p-4 max-lg:px-0 space-y-8")
 				h2(class="text-sm uppercase text-brand-accent font-medium tracking-widest") Featured: Before You Land
+				photo-figure(src="/photos/international-festival-dancing.jpg" alt="Students dancing together beneath rows of national flags at an international festival" caption="International festival on campus." ratio="aspect-3/2" sizes="sm:100vw md:100vw lg:100vw xl:33vw 2xl:33vw")
 			div(class="w-full lg:w-8/12 p-4 max-lg:px-0 space-y-6")
 				h3(class="text-2xl lg:text-4xl text-white tracking-tighter font-light") Because success in America begins before your flight.
 				p(class="text-lg text-zinc-400 tracking-tight") Every semester, thousands of international students arrive in the United States academically prepared—but completely unprepared for everyday life.
@@ -133,4 +160,11 @@ div
 				p(class="text-lg text-zinc-400 tracking-tight") Everything I create is grounded in real-world experience, thoughtful research, and lessons learned from working with people across education, business, and leadership.
 				p(class="text-lg text-zinc-400 tracking-tight") I don't believe in overwhelming people with information. I believe in giving people the clarity they need to make better decisions.
 				p(class="text-xl lg:text-2xl text-white tracking-tight font-light") Because one informed decision today can change the course of tomorrow.
+	section#community(class="py-20 lg:py-28 bg-brand-black")
+		.container
+			h2(class="text-sm uppercase text-brand-accent font-medium tracking-widest") In Community
+			h3(class="text-2xl lg:text-4xl text-white tracking-tighter font-light pt-4 w-full lg:w-3/5") Preparation is easier when you're not doing it alone.
+			p(class="text-lg text-zinc-400 tracking-tight pt-4 w-full lg:w-1/2") Study sessions, celebrations, and the ordinary evenings in between — the people you find along the way are part of how you arrive prepared.
+			.grid(class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-12")
+				photo-figure(v-for="photo in communityPhotos" :key="photo.src" :src="photo.src" :alt="photo.alt" :caption="photo.caption" ratio="aspect-4/3" sizes="sm:100vw md:33vw lg:33vw xl:33vw 2xl:33vw")
 </template>
