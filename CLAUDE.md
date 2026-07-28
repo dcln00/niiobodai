@@ -13,6 +13,8 @@ npm run preview    # preview a production build
 
 There is no test suite, linter, or typecheck script configured. To verify a change actually works, run `npm run dev` and drive the affected route in a browser — this is how prior regressions (SSR 500s, content fetch errors) were caught, since they don't surface in a build.
 
+**Do not run `npm run build` as a reflexive check.** It is slow and it does not catch what breaks here. For changes to pages, components, Pug templates, or Tailwind classes, the dev server is the only gate you need — curl the affected routes for SSR status and grep the rendered HTML. Build **only** when a change touches `server/`, `shared/`, `nuxt.config.ts`, or dependencies, where it is the sole thing that compiles server code and resolves auto-imports into the Nitro bundle. When you do build, say why first.
+
 **Do not use the `claude-in-chrome` browser automation tools.** When a change needs visual/browser verification, ask the user to check it rather than driving the browser yourself.
 
 ## Stack
