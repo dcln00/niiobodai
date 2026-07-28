@@ -1,5 +1,6 @@
-// Single source of truth for the paid digital product and its gated files.
-// Filenames map to server/assets/products/*.pdf (private, never web-served).
+// Private mapping from a product slug to its gated files. Filenames map to
+// server/assets/products/*.pdf (private, never web-served), so this module stays
+// server-only on purpose — public marketing data lives in shared/utils/products.ts.
 
 export interface DigitalFile {
 	slug: string
@@ -8,22 +9,8 @@ export interface DigitalFile {
 	downloadName: string
 }
 
-export interface DigitalProduct {
-	slug: string
-	name: string
-	description: string
-	priceInCents: number
-	currency: string
-	files: DigitalFile[]
-}
-
-export const BEFORE_YOU_LAND: DigitalProduct = {
-	slug: 'before-you-land',
-	name: 'Before You Land — Ultimate International Student Survival Guide',
-	description: 'The complete survival guide plus bonus resources to help you arrive prepared.',
-	priceInCents: 2700,
-	currency: 'usd',
-	files: [
+const PRODUCT_FILES: Record<string, DigitalFile[]> = {
+	'before-you-land': [
 		{
 			slug: 'ultimate-guide',
 			filename: 'ultimate-guide.pdf',
@@ -45,7 +32,14 @@ export const BEFORE_YOU_LAND: DigitalProduct = {
 	],
 }
 
-export function getGatedFile(slug: string | undefined): DigitalFile | undefined {
-	if (!slug) return undefined
-	return BEFORE_YOU_LAND.files.find((file) => file.slug === slug)
+export function getProductFiles(productSlug: string | undefined): DigitalFile[] {
+	if (!productSlug) return []
+	return PRODUCT_FILES[productSlug] ?? []
+}
+
+export function getGatedFile(fileSlug: string | undefined): DigitalFile | undefined {
+	if (!fileSlug) return undefined
+	return Object.values(PRODUCT_FILES)
+		.flat()
+		.find((file) => file.slug === fileSlug)
 }

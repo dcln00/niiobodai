@@ -43,13 +43,15 @@ section#contact-form(class="pt-40 pb-20 lg:py-60 bg-brand-black")
 						textarea.form-input(id="message" rows="3" v-model="input.message" placeholder="Your Message" class="resize-none")
 				button(type="submit" class="mt-8 p-3 px-6 text-sm uppercase bg-white hover:bg-neutral-300 text-black") SUBMIT
 		div(class="w-full lg:w-1/2 p-4 max-lg:px-0 hidden lg:flex items-center")
-			div(class="space-y-8 bg-brand-dark w-full lg:w-2/3 p-8 rounded-lg mx-auto")
-				div
-					p(class="text-2xl text-white tracking-tighter pb-2") Email Me At
-					NuxtLink(to="mailto:info@theniiobodai.com" class="text-lg text-zinc-400") info@theniiobodai.com
-				div
-					p(class="text-2xl text-white tracking-tighter pb-2") Telephone
-					NuxtLink(to="tel:+1(617)959-0984" class="text-lg text-zinc-400") +1 (617) 959-0984
+			div(class="w-full lg:w-2/3 mx-auto space-y-8")
+				photo-figure(src="/photos/portrait-duo-event-hall.jpg" alt="Terrick standing with a student in an event hall, both smiling at the camera" ratio="aspect-3/2" sizes="sm:100vw md:100vw lg:33vw xl:33vw 2xl:33vw")
+				div(class="space-y-8 bg-brand-dark w-full p-8 rounded-lg")
+					div
+						p(class="text-2xl text-white tracking-tighter pb-2") Email Me At
+						NuxtLink(to="mailto:info@theniiobodai.com" class="text-lg text-zinc-400") info@theniiobodai.com
+					div
+						p(class="text-2xl text-white tracking-tighter pb-2") Telephone
+						NuxtLink(to="tel:+1(617)959-0984" class="text-lg text-zinc-400") +1 (617) 959-0984
 section#newsletter(class="py-20 lg:py-28 bg-brand-dark")
 	.container
 		.content(class="w-full lg:w-2/3 mx-auto text-center space-y-6")

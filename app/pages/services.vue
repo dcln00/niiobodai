@@ -34,8 +34,9 @@ const services = [
 
 <template lang="pug">
 div
-	section#hero(class="pt-40 pb-16 lg:pb-24 bg-brand-black")
-		.container
+	section#hero(class="relative pt-40 pb-16 lg:pb-24 bg-brand-black overflow-hidden")
+		hero-media(src="/photos/formal-event-group-portrait.jpg" alt="Terrick with four colleagues, arms linked, at a formal evening event" position="object-[50%_25%]" :priority="true")
+		.container(class="relative")
 			p(class="text-sm uppercase text-brand-accent font-medium tracking-widest pb-4") Services
 			h1(class="text-3xl lg:text-5xl text-white tracking-tighter font-light w-full lg:w-3/4") Let's Build What's Next
 	section#services(class="py-16 lg:py-24 bg-brand-dark")

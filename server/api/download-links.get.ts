@@ -32,13 +32,17 @@ export default defineEventHandler(async (event): Promise<{ files: DownloadLink[]
 	if (session.payment_status !== 'paid') {
 		throw createError({ statusCode: 403, statusMessage: 'Payment not verified.' })
 	}
-	if (session.metadata?.product_slug !== BEFORE_YOU_LAND.slug) {
+
+	// Files are resolved from the slug Stripe recorded at checkout, so a session
+	// only ever unlocks the product it actually paid for.
+	const files = getProductFiles(session.metadata?.product_slug)
+	if (!files.length) {
 		throw createError({ statusCode: 403, statusMessage: 'Purchase does not grant these files.' })
 	}
 
 	const secret = getSigningSecret(event)
 	return {
-		files: BEFORE_YOU_LAND.files.map((file) => ({
+		files: files.map((file) => ({
 			slug: file.slug,
 			label: file.label,
 			url: `/api/download/${file.slug}?token=${createDownloadToken(secret, file.slug)}`,

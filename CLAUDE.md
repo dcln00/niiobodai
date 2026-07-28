@@ -13,6 +13,8 @@ npm run preview    # preview a production build
 
 There is no test suite, linter, or typecheck script configured. To verify a change actually works, run `npm run dev` and drive the affected route in a browser — this is how prior regressions (SSR 500s, content fetch errors) were caught, since they don't surface in a build.
 
+**Do not run `npm run build` as a reflexive check.** It is slow and it does not catch what breaks here. For changes to pages, components, Pug templates, or Tailwind classes, the dev server is the only gate you need — curl the affected routes for SSR status and grep the rendered HTML. Build **only** when a change touches `server/`, `shared/`, `nuxt.config.ts`, or dependencies, where it is the sole thing that compiles server code and resolves auto-imports into the Nitro bundle. When you do build, say why first.
+
 **Do not use the `claude-in-chrome` browser automation tools.** When a change needs visual/browser verification, ask the user to check it rather than driving the browser yourself.
 
 ## Stack
@@ -24,6 +26,7 @@ Nuxt 4 (Vue 3, `srcDir` defaults to `app/`), `@nuxt/content` v3, `@nuxt/image`, 
 - **All SFC templates use Pug** (`<template lang="pug">`), **tab-indented**, with **attributes written inline on one line** (never split across lines, even when long). Match this in every edit.
 - **Tailwind is v4**: use canonical class forms (`leading-snug!` not `!leading-snug`, `after:duration-250` not `after:duration-[250ms]`). Theme tokens and custom utilities live in `app/assets/css/tailwind.css` via `@theme` (`brand-accent`, `brand-black`, `brand-dark`, `brand-bg`) and `@utility` (`container`, `font-outfit`, `form-input`) — there is no `tailwind.config`.
 - **`@vueuse/motion` is NOT installed.** Do not add `v-motion-*` directives — an unresolved directive crashes SSR with `getSSRProps` (500), not a warning. Legacy `v-motion` usages were the cause of past 500s.
+- **`<nuxt-img sizes>` keys are max-widths and every key must be a named screen.** A bare value like `sizes="100vw"` is parsed as screen `1px`, so it silently emits a **1px-wide** `srcset` — the image renders blurred to nothing with no error. Always write `sizes="sm:100vw md:100vw lg:100vw xl:33vw 2xl:33vw"`, and always include the largest breakpoint you care about: the biggest key loses its media query and becomes the desktop fallback. Note these are the *opposite* of Tailwind's min-width prefixes.
 
 ## Architecture
 
