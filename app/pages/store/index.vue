@@ -31,8 +31,12 @@ div
 				article(v-for="product in PRODUCTS" :key="product.slug" class="flex flex-col bg-brand-dark rounded-lg p-8 lg:p-12 space-y-6")
 					p(class="text-sm uppercase text-brand-accent font-medium tracking-widest") {{ product.eyebrow }}
 					h2(class="text-2xl lg:text-3xl text-white tracking-tighter font-light") {{ product.name }}
-					p(class="text-lg text-zinc-400 tracking-tight grow") {{ product.summary }}
+					p(class="text-lg text-zinc-400 tracking-tight grow") {{ product.hook }}
 					.actions(class="flex flex-wrap items-center gap-6 pt-2")
 						p(class="text-3xl text-white tracking-tighter font-light") {{ formatPrice(product) }}
 						NuxtLink(:to="`/store/${product.slug}`" class="p-3 px-6 text-sm uppercase tracking-tight bg-white text-black hover:bg-neutral-300 duration-300") See Details
+	section#author(class="py-16 lg:py-24 bg-brand-dark")
+		.container
+			h2(class="text-sm uppercase text-brand-accent font-medium tracking-widest pb-8") Who Made These
+			store-author(class="w-full lg:w-3/4")
 </template>

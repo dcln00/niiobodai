@@ -32,12 +32,14 @@ div
 			NuxtLink(to="/store" class="inline-block text-sm uppercase tracking-tight text-zinc-500 hover:text-brand-accent duration-300 pb-6") ← Back to Store
 			p(class="text-sm uppercase text-brand-accent font-medium tracking-widest pb-4") {{ product.eyebrow }}
 			h1(class="text-3xl lg:text-5xl text-white tracking-tighter font-light w-full lg:w-3/4") {{ product.name }}
-			p(class="text-lg text-zinc-400 tracking-tight pt-6 w-full lg:w-3/4") {{ product.summary }}
+			p(class="text-lg lg:text-xl text-zinc-300 tracking-tight pt-6 w-full lg:w-3/4") {{ product.hook }}
 	section#details(class="py-16 lg:py-24 bg-brand-dark")
 		.container(class="flex flex-wrap items-start")
 			.content(class="w-full lg:w-7/12 p-4 max-lg:px-0 space-y-6")
 				h2(class="text-sm uppercase text-brand-accent font-medium tracking-widest") What This Is
 				p(v-for="(paragraph, idx) in product.details" :key="idx" class="text-lg text-zinc-400 tracking-tight") {{ paragraph }}
+				.author(class="pt-6 border-t border-white/10")
+					store-author(:compact="true")
 			.purchase(class="w-full lg:w-5/12 p-4 max-lg:px-0 max-lg:pt-12")
 				.card(class="bg-brand-black rounded-lg p-8 space-y-6")
 					h2(class="text-sm uppercase text-brand-accent font-medium tracking-widest") What's Included

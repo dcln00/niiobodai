@@ -7,6 +7,9 @@ export interface DigitalProduct {
 	slug: string
 	eyebrow: string
 	name: string
+	/** Sales-facing hook. Leads the store card and the product page. */
+	hook: string
+	/** Short factual line. Used for SEO meta and the Stripe line item, so keep it under ~155 characters. */
 	summary: string
 	details: string[]
 	includes: string[]
@@ -21,11 +24,12 @@ export const PRODUCTS: DigitalProduct[] = [
 		slug: 'before-you-land',
 		eyebrow: 'Digital Guide',
 		name: 'Before You Land — Ultimate International Student Survival Guide',
+		hook: "You got the visa. You booked the flight. Now what? Before You Land gives you everything your orientation packet never will — from credit scores and cooking to hair care and roommate etiquette. This is the guide that prepares you for real student life in the US.",
 		summary:
 			'The complete survival guide for international students — plus 3 bonus resources. Delivered instantly as downloadable PDFs.',
 		details: [
-			'Every semester, thousands of international students arrive in the United States academically prepared but completely unprepared for everyday life. No one explains how credit scores work, how expensive healthcare can be, or why your first financial decisions follow you for years.',
-			'This guide collects the things students usually learn the hard way — money, housing, healthcare, transportation, networking, and the first job search — into one place you can read before you board the plane.',
+			'Your university will tell you how to register for classes. It will not tell you how to open a bank account that quietly drains you in fees, what to do the first time you get sick, or how to cook the food you grew up on with what you can actually find at the store.',
+			'Before You Land collects the things international students usually learn the hard way — money and credit, housing and roommates, healthcare, transportation, groceries and cooking, hair and personal care, networking, and the first job search — into one place you can read before you board the plane.',
 			'You get the full guide plus three bonus resources, all as PDFs you can download immediately after checkout and keep for good.',
 		],
 		includes: [
