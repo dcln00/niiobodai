@@ -84,8 +84,8 @@ useSeoMeta({
 </script>
 
 <template lang="pug">
-.body-outlet(class="relative flex flex-col min-h-screen bg-brand-bg text-brand-black selection:bg-brand-black selection:text-white antialiased overflow-x-hidden")
-	.ambient-glow(class="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-amber-200/20 via-orange-100/10 to-transparent blur-3xl -z-10")
+div(class="body-outlet relative flex flex-col min-h-screen bg-brand-bg text-brand-black selection:bg-brand-black selection:text-white antialiased overflow-x-hidden")
+	div(class="ambient-glow pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-amber-200/20 via-orange-100/10 to-transparent blur-3xl -z-10")
 	app-header(@toggle-show="toggleShow")
 	mobile-nav(:show="show" @close="show = false")
 	NuxtRouteAnnouncer

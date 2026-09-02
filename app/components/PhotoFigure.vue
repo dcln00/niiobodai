@@ -21,7 +21,7 @@ const {
 
 <template lang="pug">
 figure(class="group space-y-3 w-full")
-	.frame(:class="['relative overflow-hidden bg-brand-surface-subtle rounded-3xl border border-brand-black/8 shadow-[0_4px_20px_rgba(23,22,21,0.04)]', ratio]")
+	div(class="frame" :class="['relative overflow-hidden bg-brand-surface-subtle rounded-3xl border border-brand-black/8 shadow-[0_4px_20px_rgba(23,22,21,0.04)]', ratio]")
 		nuxt-img(:src="src" :alt="alt" :sizes="sizes" format="webp" quality="85" loading="lazy" :class="['size-full object-cover group-hover:scale-103 transition-transform duration-700 ease-out', position]")
 	figcaption(v-if="caption" class="flex items-center gap-2 text-xs font-medium text-brand-muted tracking-wide")
 		span(class="size-1 rounded-full bg-brand-black/30")
