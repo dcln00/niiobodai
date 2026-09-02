@@ -9,11 +9,17 @@ const meta = useMeta()
 </script>
 
 <template lang="pug">
-.store-author(:class="['flex gap-5', compact ? 'items-center' : 'items-start max-lg:flex-col']")
-	.photo(:class="['shrink-0 aspect-3/4 overflow-hidden rounded-lg bg-brand-black', compact ? 'w-16' : 'w-20 lg:w-24']")
-		nuxt-img(src="/photos/portrait-navy-suit-outdoors.jpg" :alt="`Portrait of ${meta.person.legalName}`" width="96" height="128" format="webp" quality="80" loading="lazy" class="size-full object-cover object-[50%_20%]")
-	.byline(class="space-y-3")
-		p(class="text-zinc-400 tracking-tight") Created by #[span(class="text-white") Terrick] — an international student who learned these lessons the hard way, so you don't have to.
-		p(v-if="!compact" class="text-zinc-500 tracking-tight") He came through the US graduate system as an international student himself, working out the banking, the housing, the healthcare, and the job search the slow way. This is the guide he wishes someone had handed him at the airport.
-		NuxtLink(v-if="!compact" to="/about" class="inline-block text-sm uppercase tracking-tight text-white hover:text-brand-accent duration-300") More About Terrick →
+.store-author(:class="['rounded-3xl border border-brand-black/6 bg-brand-surface p-6 lg:p-8 shadow-[0_4px_24px_rgba(23,22,21,0.03)] flex gap-6', compact ? 'items-center p-4!' : 'items-start max-md:flex-col']")
+	.photo(:class="['shrink-0 aspect-3/4 overflow-hidden bg-brand-surface-subtle border border-brand-black/8', compact ? 'size-14 rounded-full aspect-square' : 'w-20 sm:w-24 rounded-2xl shadow-sm']")
+		nuxt-img(src="/photos/portrait-navy-suit-outdoors.jpg" :alt="`Portrait of ${meta.person.legalName}`" width="120" height="160" format="webp" quality="85" loading="lazy" class="size-full object-cover object-[50%_15%]")
+	.byline(class="space-y-3 flex-1")
+		.flex(class="items-center gap-2 flex-wrap")
+			span(class="font-display font-bold text-base text-brand-black") Terrick Nii Obodai Torgbor
+			span(class="label-pill text-[10px] py-0.5 px-2.5") Author & Strategist
+		p(class="text-sm sm:text-base text-brand-muted leading-relaxed") Created by an international student who learned these systems the hard way — so you don't have to navigate them alone.
+		p(v-if="!compact" class="text-sm text-brand-muted leading-relaxed") Graduate training in Global Health Policy & Management from Brandeis University. Built from direct experience with US immigration, healthcare, housing, credit, and high-impact career planning.
+		NuxtLink(v-if="!compact" to="/about" class="btn-ghost inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold pt-1")
+			span Read full background
+			span →
 </template>
+
