@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const title = 'Store - Nii Obodai'
+const title = 'Digital Store & Toolkits — Nii Obodai'
 const description =
-	'Practical digital resources — guides, planners, and toolkits to help you study abroad, grow a business, and strengthen your brand with confidence.'
+	'Practical digital resources — survival guides, planners, and toolkits to help you study abroad, grow a business, and strengthen your brand with confidence.'
 
 useSeoMeta({
 	title,
@@ -11,32 +11,54 @@ useSeoMeta({
 	twitterTitle: title,
 	twitterDescription: description,
 })
+
+const guarantees = [
+	{ title: 'Instant Download', desc: 'Secure PDF delivery immediately upon checkout.' },
+	{ title: 'Lifetime Access', desc: 'Keep and access your guides across any device.' },
+	{ title: 'Tested Frameworks', desc: 'Real-world insights from firsthand US experience.' },
+]
 </script>
 
 <template lang="pug">
 div
-	section#hero(class="pt-40 pb-16 lg:pb-24 bg-brand-black")
-		.container
-			p(class="text-sm uppercase text-brand-accent font-medium tracking-widest pb-4") Digital Store
-			h1(class="text-3xl lg:text-5xl text-white tracking-tighter font-light w-full lg:w-3/4") Practical Resources for Ambitious People
-	section#intro(class="py-16 lg:py-24 bg-brand-dark")
-		.container
-			.content(class="w-full lg:w-3/4 space-y-6")
-				p(class="text-2xl lg:text-3xl text-white tracking-tight font-light") Knowledge is most valuable when it leads to action.
-				p(class="text-lg text-zinc-400 tracking-tight") That's why every digital resource in this store is designed to help you solve a real problem, make a better decision, or move forward with confidence.
-				p(class="text-lg text-zinc-400 tracking-tight") Whether you're preparing to study abroad, growing a business, building your career, or strengthening your personal brand, you'll find practical tools created to save you time and help you succeed.
-	section#products(class="py-16 lg:py-24 bg-brand-black")
-		.container
-			.grid(class="grid grid-cols-1 lg:grid-cols-2 gap-8")
-				article(v-for="product in PRODUCTS" :key="product.slug" class="flex flex-col bg-brand-dark rounded-lg p-8 lg:p-12 space-y-6")
-					p(class="text-sm uppercase text-brand-accent font-medium tracking-widest") {{ product.eyebrow }}
-					h2(class="text-2xl lg:text-3xl text-white tracking-tighter font-light") {{ product.name }}
-					p(class="text-lg text-zinc-400 tracking-tight grow") {{ product.hook }}
-					.actions(class="flex flex-wrap items-center gap-6 pt-2")
-						p(class="text-3xl text-white tracking-tighter font-light") {{ formatPrice(product) }}
-						NuxtLink(:to="`/store/${product.slug}`" class="p-3 px-6 text-sm uppercase tracking-tight bg-white text-black hover:bg-neutral-300 duration-300") See Details
-	section#author(class="py-16 lg:py-24 bg-brand-dark")
-		.container
-			h2(class="text-sm uppercase text-brand-accent font-medium tracking-widest pb-8") Who Made These
-			store-author(class="w-full lg:w-3/4")
+	section#hero(class="pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden relative")
+		.container(class="space-y-12")
+			.content(class="space-y-6 max-w-4xl")
+				.flex(class="items-center gap-2")
+					span(class="label-pill") Digital Toolkits & Guides
+					span(class="font-mono text-xs text-brand-muted") // Instant Download
+				h1(class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-black leading-[1.12]") Practical Resources for #[span(class="font-serif-accent font-normal italic text-stone-500") Ambitious People.]
+				p(class="text-lg sm:text-xl text-brand-muted leading-relaxed max-w-3xl") Every digital guide, template, and planner in this library is engineered to solve a specific high-friction problem, eliminate guesswork, and save you valuable time.
+			.guarantees(class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 pt-4")
+				.guarantee-card(v-for="item in guarantees" :key="item.title" class="rounded-3xl bg-brand-surface border border-brand-black/6 p-6 shadow-sm space-y-1.5")
+					p(class="font-display font-bold text-base text-brand-black") {{ item.title }}
+					p(class="text-xs text-brand-muted") {{ item.desc }}
+	section#products(class="py-16 lg:py-28 bg-brand-surface-subtle")
+		.container(class="space-y-12")
+			section-header(number="01" title="Available Products" headline="Curated Digital Survival Guides" description="Instant access downloadable resources crafted with precision.")
+			.grid(class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch")
+				article(v-for="product in PRODUCTS" :key="product.slug" class="lg:col-span-8 rounded-3xl lg:rounded-4xl bg-brand-surface border border-brand-black/8 p-8 lg:p-12 shadow-[0_8px_30px_rgba(23,22,21,0.04)] flex flex-col justify-between space-y-8")
+					.space-y-6
+						.flex(class="items-center justify-between gap-4 flex-wrap")
+							span(class="label-pill text-[10px]") {{ product.eyebrow }}
+							span(class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200") Complete Bundle (4 PDFs)
+						.space-y-3
+							h2(class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-black") {{ product.name }}
+							p(class="text-base sm:text-lg text-brand-muted leading-relaxed") {{ product.hook }}
+						.includes-box(class="rounded-2xl bg-brand-surface-subtle border border-brand-black/6 p-6 space-y-3")
+							p(class="text-xs font-mono font-bold uppercase tracking-wider text-stone-500") // What's Inside This Bundle
+							ul(class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-stone-700")
+								li(v-for="item in product.includes" :key="item" class="flex items-center gap-2")
+									span(class="size-1.5 rounded-full bg-emerald-500")
+									span {{ item }}
+					.actions(class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-brand-black/6")
+						.price-block
+							p(class="text-xs uppercase font-mono font-bold text-stone-400 tracking-wider") One-time payment
+							p(class="font-display text-3xl sm:text-4xl font-bold text-brand-black") {{ formatPrice(product) }}
+						NuxtLink(:to="`/store/${product.slug}`" class="btn-primary")
+							span View Guide Details & Download
+							span →
+				.author-col(class="lg:col-span-4 flex")
+					store-author(class="h-full")
 </template>
+

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const title = 'Blog - Nii Obodai'
+const title = 'Journal & Insights — Nii Obodai'
 const description =
 	'Practical insights on studying abroad, business, branding, leadership, and personal growth from Terrick Nii Obodai Torgbor.'
 
@@ -18,26 +18,39 @@ const { data: blog, status, error } = await useAsyncData('all-blog', () =>
 </script>
 
 <template lang="pug">
-section#hero(class="pt-40 pb-20 lg:pb-24 bg-brand-black")
-	.container
-		div(class="text-center space-y-4")
-			h1(class="text-3xl lg:text-5xl text-white tracking-tight font-light") Blog
-section#posts(class="py-20 bg-brand-dark")
-	.container
-		div(v-if="error" class="lg:w-1/2 mx-auto")
-			.error-snackbar(class="border border-red-500 rounded-md p-4")
-				div(class="flex space-x-4 items-center")
-					svg-close(class="shrink-0 text-2xl text-red-500")
-					p(class="capitalize text-white selection:bg-red-500") Error fetching posts
-		div(v-if="status === 'pending'" class="lg:w-1/2 mx-auto space-y-4 animate-pulse")
-			div(class="h-48 lg:h-96 bg-neutral-800")
-			div(class="h-7 bg-neutral-700")
-			div(class="h-7 w-1/2 bg-neutral-700")
-		div(v-else)
-			div(v-for="post in blog" :key="post.path" class="lg:w-1/2 mx-auto mb-16 last:mb-0")
-					NuxtLink(:to="post.path")
-						div(class="space-y-4")
-							.featured-image(class="lg:h-96 overflow-hidden")
-								NuxtImg(:src="post.image" :alt="post.title" class="w-full h-full object-cover object-center hover:scale-105 duration-300")
-							h2(class="text-2xl text-white tracking-tight font-light") {{ post.title }}
+div
+	section#hero(class="pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden relative")
+		.container(class="space-y-6 max-w-4xl")
+			.flex(class="items-center gap-2")
+				span(class="label-pill") Editorial Journal
+				span(class="font-mono text-xs text-brand-muted") // Thoughts & Frameworks
+			h1(class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-black leading-[1.12]") Perspectives on Strategy, #[span(class="font-serif-accent font-normal italic text-stone-500") Education & Growth.]
+			p(class="text-lg sm:text-xl text-brand-muted leading-relaxed") Long-form essays and actionable ideas on global education, brand building, and decision-making in transition.
+	section#posts(class="py-12 lg:py-20 bg-brand-surface-subtle")
+		.container
+			div(v-if="error" class="max-w-xl mx-auto")
+				.error-snackbar(class="rounded-3xl bg-red-50 border border-red-200 p-6 flex items-center gap-4")
+					svg-close(class="shrink-0 size-6 text-red-600")
+					p(class="text-sm font-medium text-red-900") Error loading essays. Please refresh the page.
+			div(v-else-if="status === 'pending'" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto animate-pulse")
+				.skeleton(class="rounded-3xl bg-brand-surface border border-brand-black/6 p-6 space-y-4")
+					div(class="h-64 bg-stone-200 rounded-2xl")
+					div(class="h-6 bg-stone-200 rounded-lg w-3/4")
+					div(class="h-4 bg-stone-200 rounded-lg w-1/2")
+			div(v-else class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-5xl mx-auto")
+				article(v-for="post in blog" :key="post.path" class="lg:col-span-12 rounded-3xl lg:rounded-4xl bg-brand-surface border border-brand-black/8 overflow-hidden shadow-[0_4px_24px_rgba(23,22,21,0.04)] hover:shadow-[0_12px_40px_rgba(23,22,21,0.08)] transition-all duration-300 group")
+					NuxtLink(:to="post.path" class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center")
+						.featured-image(class="lg:col-span-6 h-72 sm:h-80 lg:h-96 overflow-hidden bg-brand-surface-subtle relative")
+							NuxtImg(:src="post.image" :alt="post.title" sizes="sm:100vw md:100vw lg:100vw xl:50vw 2xl:50vw" class="size-full object-cover group-hover:scale-103 transition-transform duration-700 ease-out")
+						.content-block(class="lg:col-span-6 p-8 lg:p-12 space-y-4 flex flex-col justify-between h-full")
+							.space-y-3
+								.flex(class="items-center gap-2")
+									span(class="label-pill text-[10px]") Strategy & Healthcare
+									span(class="text-xs font-mono text-brand-muted") 5 min read
+								h2(class="font-display text-2xl sm:text-3xl font-bold text-brand-black group-hover:text-stone-700 transition-colors leading-snug") {{ post.title }}
+								p(v-if="post.description" class="text-sm sm:text-base text-brand-muted line-clamp-3 leading-relaxed") {{ post.description }}
+							.pt-4(class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-black group-hover:translate-x-1 transition-transform")
+								span Read Essay
+								span →
 </template>
+

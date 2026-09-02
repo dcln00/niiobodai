@@ -55,7 +55,7 @@ useHead({
 		},
 	],
 	meta: [
-		{ name: 'theme-color', content: '#1a1a1a' },
+		{ name: 'theme-color', content: '#FAF8F5' },
 	],
 	script: [
 		{
@@ -84,11 +84,12 @@ useSeoMeta({
 </script>
 
 <template lang="pug">
-.body-outlet(class="flex flex-col min-h-screen")
+.body-outlet(class="relative flex flex-col min-h-screen bg-brand-bg text-brand-black selection:bg-brand-black selection:text-white antialiased overflow-x-hidden")
+	.ambient-glow(class="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-amber-200/20 via-orange-100/10 to-transparent blur-3xl -z-10")
 	app-header(@toggle-show="toggleShow")
 	mobile-nav(:show="show" @close="show = false")
 	NuxtRouteAnnouncer
-	main(class="grow relative overflow-hidden")
+	main(class="grow relative")
 		NuxtPage
 	app-footer
 </template>
